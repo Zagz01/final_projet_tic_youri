@@ -102,7 +102,6 @@ def hangMan():
 
     for x in wordRandom:
         appendRandom = selectRandom.append(x)
-    print(wordRandom)
     
     for i in selectRandom:
         occurence = occurence + "_ "
@@ -110,22 +109,28 @@ def hangMan():
     print("This is the hang man game!")
     
     while fintPartie > 0:
-            lenght = occurence.count("_")
-            print(f"there is still {lenght} to discover")
+            # lenght = occurence.count("_")
+#             print(f"there is still {lenght} to discover")
 
-            guessWord = str(input(f'''
+            
+            while True:
+                lenght = occurence.count("_")
+                print(f"there is still {lenght} to discover")
+                print(wordRandom)
+                
+                guessWord = str(input(f'''
 Please guess the word!
-
 {occurence}
 ''').lower())
-            if len(guessWord) > 1:
-                print('''
+                if len(guessWord) > 1:
+                    print('''
 please enter only one letter''')
-                break
-            if not guessWord.isalpha():
-                print('''
+                elif not guessWord.isalpha():
+                    print('''
 only letters are accepted''')
-                break
+                else:
+                    break
+                
             for x in guessWord:
                 if x in selectRandom and x not in letre:
                     appendLetter = letre.append(x)
