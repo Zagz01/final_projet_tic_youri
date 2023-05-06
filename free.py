@@ -1,21 +1,5 @@
-## Jeu du pendu
-
-# Vous devez créer un petit jeu du pendu en Python. 
-# Le jeu doit permettre à l'utilisateur de deviner un mot choisi au hasard 
-# par le programme. Le jeu doit comporter les fonctionnalités suivantes : 
-
-
-
-# - Donner à l'utilisateur des informations sur la longueur du mot 
-# et le nombre de lettres restantes à trouver. 
-
-
-
-import random
-
-
 def hangMan():
-    
+    import random
     drawings =['''
 || 
 ||
@@ -23,7 +7,7 @@ def hangMan():
 || 
 ||
 ||
-||\
+||\\
 ||=================
 ''','''
 ||===========Y===== 
@@ -32,7 +16,7 @@ def hangMan():
 || 
 ||
 ||
-||\
+||\\
 ||=================
 ''','''
 ||===========Y===== 
@@ -41,7 +25,7 @@ def hangMan():
 || 
 ||
 ||
-||\
+||\\
 ||=================
 ''','''
 ||===========Y=== 
@@ -50,7 +34,7 @@ def hangMan():
 || 
 ||
 ||
-||
+||\\
 ||=================
 ''','''
 ||===========Y=== 
@@ -59,7 +43,7 @@ def hangMan():
 ||           0
 ||          /|\\
 ||
-||
+||\\
 ||=================
 ''','''
 ||===========Y=== 
@@ -68,7 +52,7 @@ def hangMan():
 ||           0
 ||          /|\\
 ||          /
-||\         
+||\\    
 ||=================
 ''','''
 ||===========Y=== 
@@ -77,7 +61,7 @@ def hangMan():
 ||           0
 ||          /|\\
 ||          / \\
-||\         
+||\\      
 ||=================
 '''
     ]
@@ -124,10 +108,10 @@ Please guess the word!
 ''').lower())
                 if len(guessWord) > 1:
                     print('''
-please enter only one letter''')
+please enter only one letter, this will not count as a try but will count as play''')
                 elif not guessWord.isalpha():
                     print('''
-only letters are accepted''')
+only letters are accepted, this will not count as a try but will count as play''')
                 else:
                     break
                 
@@ -141,14 +125,14 @@ Congratulation that was the correct letter''')
 Wrong letter, you still have {fintPartie} time(s) to play''')
                         fintPartie -= 1
                 elif x in letre:
-                    print("You already tried this letter")
+                    print("You already tried this letter, this will not count as a try but will count as play")
                 if x not in selectRandom and x not in wrongLetre: 
                     appendWrongLetre = wrongLetre.append(x)
                     fintPartie -= 1
                     print(f'''
 Wrong letter, you still have {fintPartie} time(s) to play''')
                 elif x in wrongLetre:
-                    print("You already tried this letter")                      
+                    print("You already tried this letter, this will not count as a try but will count as play")                      
                                 
                 if fintPartie == 6:
                         print(drawings[0])
@@ -182,8 +166,4 @@ You played {tries} time(s)''')
             if "_" not in occurence:
                 print(f"You won the game the word was {wordRandom}")
                 break
-        
-            
-            
-
 hangMan()
