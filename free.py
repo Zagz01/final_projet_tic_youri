@@ -121,9 +121,11 @@ Please guess the word!
             if len(guessWord) > 1:
                 print('''
 please enter only one letter''')
+                break
             if not guessWord.isalpha():
                 print('''
 only letters are accepted''')
+                break
             for x in guessWord:
                 if x in selectRandom and x not in letre:
                     appendLetter = letre.append(x)
@@ -142,7 +144,7 @@ Wrong letter, you still have {fintPartie} time(s) to play''')
 Wrong letter, you still have {fintPartie} time(s) to play''')
                 elif x in wrongLetre:
                     print("You already tried this letter")                      
-                
+                                
                 if fintPartie == 6:
                         print(drawings[0])
                 if fintPartie == 5:
