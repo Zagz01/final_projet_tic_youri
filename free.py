@@ -66,87 +66,87 @@ def hangMan():
 '''
     ]
 
-    randomList = ["abricot", "boussole", "crocodile", "dentelle", "émeraude", "frisson", "guitare", "horloge", "iridescence", "jonglage"]
+    randomList = ["apricot", "compass", "crocodile", "lace", "emerald", "shiver", "guitar", "clock", "iridescence", "juggling"]
 
-    selectRandom = []
+    selectRandomWord = []
     
-    letre = []
+    letter = []
     
-    wrongLetre = []
+    wrongletter = []
 
     wordRandom = random.choice(randomList)
     
-    occurence = ""
+    hiddenWord = ""
     
     tries = 0
     
-    fintPartie = 7
+    failTries = 7
     
     lenght = len(wordRandom)
 
     for x in wordRandom:
-        appendRandom = selectRandom.append(x)
+        appendRandom = selectRandomWord.append(x)
     
-    for i in selectRandom:
-        occurence = occurence + "_ "
+    for i in selectRandomWord:
+        hiddenWord = hiddenWord + "_ "
     
     print("This is the hang man game!")
     
-    while fintPartie > 0:
-            # lenght = occurence.count("_")
+    while failTries > 0:
+            # lenght = hiddenWord.count("_")
 #             print(f"there is still {lenght} to discover")
 
             
             while True:
-                lenght = occurence.count("_")
-                print(f"there is still {lenght} to discover")
+                lenght = hiddenWord.count("_")
+                print(f"There is still {lenght} to discover")
                 print(wordRandom)
                 
                 guessWord = str(input(f'''
 Please guess the word!
-{occurence}
+{hiddenWord}
 ''').lower())
                 if len(guessWord) > 1:
                     print('''
-please enter only one letter, this will not count as a try but will count as play''')
+Please enter only one letter, this will not count''')
                 elif not guessWord.isalpha():
                     print('''
-only letters are accepted, this will not count as a try but will count as play''')
+Only letters are accepted, this will not count''')
                 else:
                     break
                 
             for x in guessWord:
-                if x in selectRandom and x not in letre:
-                    appendLetter = letre.append(x)
+                if x in selectRandomWord and x not in letter:
+                    appendLetter = letter.append(x)
                     print('''
 Congratulation that was the correct letter''')
-                    if x not in selectRandom:
+                    if x not in selectRandomWord:
                         print(f'''
-Wrong letter, you still have {fintPartie} time(s) to play''')
-                        fintPartie -= 1
-                elif x in letre:
+Wrong letter, you still have {failTries} trie(s) to play''')
+                        failTries -= 1
+                elif x in letter:
                     print("You already tried this letter, this will not count as a try but will count as play")
-                if x not in selectRandom and x not in wrongLetre: 
-                    appendWrongLetre = wrongLetre.append(x)
-                    fintPartie -= 1
+                if x not in selectRandomWord and x not in wrongletter: 
+                    appendWrongletter = wrongletter.append(x)
+                    failTries -= 1
                     print(f'''
-Wrong letter, you still have {fintPartie} time(s) to play''')
-                elif x in wrongLetre:
+Wrong letter, you still have {failTries} trie(s) to play''')
+                elif x in wrongletter:
                     print("You already tried this letter, this will not count as a try but will count as play")                      
                                 
-                if fintPartie == 6:
+                if failTries == 6:
                         print(drawings[0])
-                if fintPartie == 5:
+                if failTries == 5:
                         print(drawings[1])
-                if fintPartie == 4:
+                if failTries == 4:
                         print(drawings[2])
-                if fintPartie == 3:
+                if failTries == 3:
                         print(drawings[3])
-                if fintPartie == 2:
+                if failTries == 2:
                         print(drawings[4])
-                if fintPartie == 1:
+                if failTries == 1:
                         print(drawings[5])
-                if fintPartie == 0:
+                if failTries == 0:
                         print(drawings[6])
                         print("You lost the game")
                         break
@@ -154,16 +154,18 @@ Wrong letter, you still have {fintPartie} time(s) to play''')
                 tries += 1
                 print(f'''
 You played {tries} time(s)''')
-            newOccurence = []
-            for i in selectRandom:
-                if i in letre:
-                    newOccurence.append(i)
+            newhiddenWord = []
+            for i in selectRandomWord:
+                if i in letter:
+                    newhiddenWord.append(i)
                 else:
-                    newOccurence.append("_")
-            occurence = " ".join(newOccurence)
+                    newhiddenWord.append("_")
+            hiddenWord = " ".join(newhiddenWord)
             
             
-            if "_" not in occurence:
+            if "_" not in hiddenWord:
                 print(f"You won the game the word was {wordRandom}")
                 break
+            
+            
 hangMan()
