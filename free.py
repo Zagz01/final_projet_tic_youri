@@ -72,7 +72,7 @@ def hangMan():
     
     letter = []
     
-    wrongletter = []
+    wrongLetter = []
 
     wordRandom = random.choice(randomList)
     
@@ -93,10 +93,6 @@ def hangMan():
     print("This is the hang man game!")
     
     while failTries > 0:
-            # lenght = hiddenWord.count("_")
-#             print(f"there is still {lenght} to discover")
-
-            
             while True:
                 lenght = hiddenWord.count("_")
                 print(f"There is still {lenght} to discover")
@@ -126,12 +122,12 @@ Wrong letter, you still have {failTries} trie(s) to play''')
                         failTries -= 1
                 elif x in letter:
                     print("You already tried this letter, this will not count as a try but will count as play")
-                if x not in selectRandomWord and x not in wrongletter: 
-                    appendWrongletter = wrongletter.append(x)
+                if x not in selectRandomWord and x not in wrongLetter: 
+                    appendWrongLetter = wrongLetter.append(x)
                     failTries -= 1
                     print(f'''
 Wrong letter, you still have {failTries} trie(s) to play''')
-                elif x in wrongletter:
+                elif x in wrongLetter:
                     print("You already tried this letter, this will not count as a try but will count as play")                      
                                 
                 if failTries == 6:
